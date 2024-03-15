@@ -41,16 +41,67 @@ formRegistro.addEventListener("submit", function(event){
     let apellidoForm = document.getElementById("apellido");
     let emailForm = document.getElementById("email");
     let passwordForm = document.getElementById("password");
+    let replyPasswordForm = document.getElementById("replyPassword");
 
     //muestro los valores que tienen los inputs
-    console.log("nombre", nombreForm.value);
-    console.log("apellido", apellidoForm.value);
-    console.log("email", emailForm.value);
-    console.log("password", passwordForm.value);
+    let nombre = nombreForm.value;
+    let mensaje = "";
+    if(nombre == ""){
+        mensaje = "Debe proporcionar un nombre válido."
+        messageOutput(mensaje, true);
+        return;
+    }
 
-    alert(`Gracias ${nombreForm.value} ${apellidoForm.value} por inscribirte.`);
+    let apellido =  apellidoForm.value;
+    if(apellido == ""){
+        mensaje = "Debe proporcionar un apellido válido."
+        messageOutput(mensaje, true);
+        return;
+    }
 
-})
+    let email = emailForm.value;
+    if(email == ""){
+        mensaje = "Debe proporcionar un email válido."
+        messageOutput(mensaje, true);
+        return;
+    }
+    let password = passwordForm.value;
+    let replyPassword = replyPasswordForm.value
+    if(password == "" || replyPassword == "" || password != replyPassword){
+        mensaje = "Debe proporcionar un password válido y verificar que ambos password sean iguales."
+        messageOutput(mensaje, true);
+        return;
+    }
+
+    mensaje = "Usuario registrado con éxito.";
+    messageOutput(mensaje)
+    
+
+
+
+
+
+
+    
+});
+
+function messageOutput(mensaje, error = false){
+    //MANIPULAR ATRIBUTOS DE UN ELEMENTO
+    //mensajeForm.setAttribute("style", "color:green; background-color: blue; padding:30px;");
+
+    let mensajeForm = document.getElementById("mensajeForm");
+    mensajeForm.innerHTML = mensaje;
+    if(error){
+        mensajeForm.classList.remove("message-success");
+        mensajeForm.classList.add("message-error");
+    }else {
+        mensajeForm.classList.remove("message-error");
+        mensajeForm.classList.add("message-success");
+    }
+
+    
+
+}
 
 
 
