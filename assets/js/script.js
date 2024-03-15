@@ -29,4 +29,29 @@ console.log(subtituloS2.innerText);
 
 //MANIPULANDO FORMULARIOS
 
+//capturamos formulario por su id
+let formRegistro = document.getElementById("formRegistro");
+//agregamos un listener al evento submit
+formRegistro.addEventListener("submit", function(event){
+    //suspender el evento por defecto del formulario que envía los datos
+    event.preventDefault();
+
+    //INPUTS DEL FORMULARIO
+    let nombreForm = document.getElementById("nombre");
+    let apellidoForm = document.getElementById("apellido");
+    let emailForm = document.getElementById("email");
+    let passwordForm = document.getElementById("password");
+
+    //muestro los valores que tienen los inputs
+    console.log("nombre", nombreForm.value);
+    console.log("apellido", apellidoForm.value);
+    console.log("email", emailForm.value);
+    console.log("password", passwordForm.value);
+
+    alert(`Gracias ${nombreForm.value} ${apellidoForm.value} por inscribirte.`);
+
+})
+
+
+
 
